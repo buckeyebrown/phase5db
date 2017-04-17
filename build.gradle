@@ -39,6 +39,7 @@ configurations{
 }
 
 dependencies {
+
     // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
@@ -51,6 +52,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
     testCompile("junit:junit")
+
+
 }
 
 dependencies {
@@ -84,69 +87,3 @@ task initJavaFolders() {
 		}
 }
 
-task openTestResults() {
-	description 'Opens the JUnit test results on your default browser.'
-	doLast {
-		new java.awt.Desktop().open(file("$buildDir/reports/tests/index.html"))
-		}
-}
-
-task runJasmine(type:Exec){
-  description 'Runs jasmine on the command line.'
-  
-  workingDir 'src/test/jasmine'
-      doFirst {
-  		println("#####################################################################")
-  		println("Running jasmine tests now.")
-  		println("Please make sure jasmine files are in src/test/jasmine.")
-  		println("*********************************************************************")
-  		}
-  commandLine 'jasmine'
-  	  doLast {
-  	    println("*********************************************************************")
-  		println("Jasmine tests are now finished.")
-  		println("#####################################################################")
-  		}
-  
-}
-
-
-sourceSets {
-    main {
-        java { 
-        	srcDir 'src' 
-        }
-        resources { 
-        	srcDir 'src' 
-        }
-    }
-
-    test {
-        resources { 
-        	srcDir 'test' 
-        }
-        java { 
-        	srcDir 'test' 
-        }
-    }
-}
-
-
-test {
-
-      doFirst {
-  		println("#####################################################################")
-  		println("Running JUnit tests now.")
-  		println("*********************************************************************")
-  		}
-    dependsOn runJasmine
-
-    afterTest { desc, result -> 
-        println "Executing test ${desc.name}, from class [${desc.className}] with result: ${result.resultType}"
-    }
-     doLast {
-  	    println("*********************************************************************")
-  		println("JUnit tests are now finished.")
-  		println("#####################################################################")
-  		}
-}

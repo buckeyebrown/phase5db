@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="ojdbc7-12.1.0.2">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Desktop/ojdbc7-12.1.0.2.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - The Ohio State University/CSE 3241/Microsoft JDBC Driver 6.0 for SQL Server/sqljdbc_6.0/enu/jre8/sqljdbc42.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
