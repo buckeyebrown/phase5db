@@ -67,7 +67,7 @@ public class JSONResponse extends SQLConnect {
 	}
 
 	protected void putJSONArrayIntoResponseArray() throws JSONException, SQLException {
-		JSONArray SQLData = converter.convert(SQLConnect.getMonarchDBResults());
+		JSONArray SQLData = converter.convert(SQLConnect.setUpConnection());
 		responseArray.put(0, SQLData);
 	}
 

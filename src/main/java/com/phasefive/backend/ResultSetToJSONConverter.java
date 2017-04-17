@@ -31,7 +31,7 @@ public class ResultSetToJSONConverter {
 	}
 
 	protected static void createJSONObjectForEachRow(ResultSet rs, ResultSetMetaData rsmd, int numColumns,
-			JSONObject obj) throws SQLException, JSONException {
+													 JSONObject obj) throws SQLException, JSONException {
 		for (int i = 1; i < numColumns + 1; i++) {
 			String column_name = rsmd.getColumnName(i);
 
@@ -70,3 +70,4 @@ public class ResultSetToJSONConverter {
 	protected static void placeJSONObjectInArray(JSONArray json, JSONObject obj) {
 		json.put(obj);
 	}
+}

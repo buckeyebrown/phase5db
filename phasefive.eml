@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="sqljdbc42.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/sqljdbc42.jar!/"/>
+	</lib>
+	<levels>
+		<level name="sqljdbc42" value="project"/>
+	</levels>
+</component>

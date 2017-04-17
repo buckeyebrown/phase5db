@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 
 import com.phasefive.backend.JSONResponse;
-import com.phasefive.backend.ObtainOrderNumberAndMarketCode;
+import com.phasefive.backend.ObtainQueryCode;
 import com.phasefive.backend.SQLConnect;
 
 import java.io.PrintWriter;
@@ -39,9 +39,8 @@ public class Phase5RESTController {
 		out = response.getWriter();
 
 		try {
-			ObtainQueryCode.setQueryCode(queryValue);
+			ObtainQueryCode.setQueryCode(Integer.parseInt(queryValue));
 			sc = new SQLConnect();
-			sc.setUpSQLConnections();
 			jsonResponse = new JSONResponse();
 			jsonResponse.obtainJSONResponse();
 		} catch (JSONException | SQLException e) {
