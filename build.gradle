@@ -21,7 +21,7 @@ jar {
 }
 
 springBoot {
-  mainClass = "com.omspipeline.springboot.OMSPipelineApplication"
+  mainClass = "com.phasefive.springboot.Phase5Application"
 }
 
 sourceCompatibility = 1.8
