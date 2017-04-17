@@ -2,12 +2,12 @@
 body {
 	padding-bottom: 50px;
 	padding-top: 10px;
-	background-color: beige;
+	background-color: powderblue;
 	font-size: 95%;
 	font: bold;
 }
 
-.OrderNumsAndMarketCode {
+.project {
 	font: bold;
 	font-family: 'Roboto Slab',serif;
 	font-weight: 800;
@@ -48,8 +48,5 @@ th, td {
 .orderSourceHeader:hover, .orderCancelHeader:hover, .orderReleaseHeader:hover, .orderCompleteHeader:hover {
 	background-color:#f4f5fc;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c72e7ab8cc9e1cfdfa7320a65a15d5cbe3a335e
 

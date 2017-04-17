@@ -15,6 +15,8 @@ public class JSONResponse extends SQLConnect {
 	private ResultSetToJSONConverter converter;
 	private SQLConnect sc;
 
+
+
 	public JSONArray getResponseArray() {
 		return responseArray;
 	}
@@ -66,14 +68,9 @@ public class JSONResponse extends SQLConnect {
 
 	protected void putJSONArrayIntoResponseArray() throws JSONException, SQLException {
 		JSONArray SQLData = converter.convert(SQLConnect.getMonarchDBResults());
-		responseArray.put(0, monarchSQLData);
+		responseArray.put(0, SQLData);
 	}
 
-	protected void putCreateJSONArrayIntoResponseArray() throws JSONException, SQLException {
-		JSONArray createSQLData = converter.convert(SQLConnect.getCreateDBResults());
-		createSQLData.put(converter.convertEntityStatus(SQLConnect.getCreateDBResultsStatus(), SQLConnect.getCreateDBResultsStatusJobIDZero()));
-		responseArray.put(1, createSQLData);
-	}
 
 	protected void sendResponseToServlet(PrintWriter responseOutput) {
 		responseOutput.println(responseArray);

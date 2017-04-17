@@ -32,16 +32,14 @@ public class Phase5RESTController {
 	}
 
 	@RequestMapping(value = "/MainServ", method = RequestMethod.GET)
-	public void mainServ(@RequestParam(value = "orderNumber", defaultValue = "") String orderNum,
-			@RequestParam(value = "marketCode", defaultValue = "0") String marCode, HttpServletResponse response)
+	public void mainServ(@RequestParam(value = "queryCode", defaultValue = "0") String queryValue, HttpServletResponse response)
 			throws SQLException, IOException {
 
 		response.setContentType("application/json; charset=UTF-8");
 		out = response.getWriter();
 
 		try {
-			ObtainOrderNumberAndMarketCode.setOrderNumber(orderNum);
-			ObtainOrderNumberAndMarketCode.setMarketCode(Integer.parseInt(marCode));
+			ObtainQueryCode.setQueryCode(queryValue);
 			sc = new SQLConnect();
 			sc.setUpSQLConnections();
 			jsonResponse = new JSONResponse();

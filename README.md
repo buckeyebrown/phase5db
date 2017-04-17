@@ -47,11 +47,11 @@ Brian and Dylan's Intern Project for OMS
  ```
  * java -version should now say 1.8
 
-3. Update the IP in the writeSQLTablesAndChangeHTML.js to your instance’s IP
+3. Update the IP in the phaseFiveJavascript.js to your instance’s IP
  * Commands:
  ```
  cd ~/omspipelineweb/src/main/webapp/
- sudo vi writeSQLTablesAndChangeHTML.js
+ sudo vi phaseFiveJavascript.js
  ```
  * Edit the $.ajax call’s URL
  * “url” : “http://[your IP Here]/MainServ”,
