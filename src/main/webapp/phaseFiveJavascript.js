@@ -15,7 +15,8 @@ var sendRequest = {
 	},
 
 	checkForValidMarketCode : function(queryCode) {
-		return !(queryCode == 0);
+		var queryText = $("#queryInput").val();
+		return !(queryCode == 0 && (queryText == ""));
 	},
 
 	checkIfValidCode : function(queryCode) {
@@ -26,7 +27,8 @@ var sendRequest = {
 		}
 		else {
 			buttonState.changeButtonState(2);
-			sendRequest.sendRequestWithQueryCode(queryCode);
+			var queryText = $("#queryInput").val();
+			sendRequest.sendRequestWithQueryCode(queryCode, queryText);
 		}
 	},
 
@@ -35,11 +37,12 @@ var sendRequest = {
 		$(".ErrorMessage").html(message);
 	},
 
-	sendRequestWithQueryCode : function(queryCode) {
+	sendRequestWithQueryCode : function(queryCode, queryText) {
 		$.ajax({
 			"url" : "http://localhost:8060//MainServ",
 			data : {
-				"queryCode" : queryCode
+				"queryCode" : queryCode,
+				"queryText" : queryText
 			},
 			"error" : function(){
 				var message = "The query was not found.";
@@ -83,7 +86,12 @@ var handleResponse = {
 	},
 
 	writeTableToHTML: function (responseData) {
-		var tableName = 'Query ' + $("#selectedQueryCode").val() + ' Table';
+		if (!($("#selectedQueryCode").val() == 0)){
+			var tableName = 'Query ' + $("#selectedQueryCode").val() + ' Table';
+		}
+		else{
+			var tableName = 'Inputted Query Results'
+		}
 		var tableID = 'requestedTable';
 		var tableHTML = handleResponse.createTableHTML(responseData,
 			tableName, tableID);

@@ -53,7 +53,7 @@
 				<br></br> Select Query to run:
 				<div class="queryTextField">
 					<select id="selectedQueryCode" name="queryCode">
-						<option selected="selected" value = '0'>Select Query</option>
+						<option selected="selected" value = '0'>Type your own Query</option>
 						<option value="1">Query 1 - Union</option>
 						<option value="2">Query 2 - Intersect</option>
 						<option value="3">Query 3 - Except</option>
@@ -62,6 +62,9 @@
 						<option value="6">Query 6 - Inner Join</option>
 					</select>
 				</div>
+				<br>
+				<br>
+				Input a query:<br> <input style="width:600px" id=queryInput type="text" name="queryIn">
 				<br></br> <input type="button" id='find' value='Search'
 					onclick="sendRequestAndObtainResponse()">
 			</div>

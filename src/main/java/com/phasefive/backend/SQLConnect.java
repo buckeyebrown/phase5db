@@ -53,6 +53,11 @@ public class SQLConnect {
 	private static String getQuery(int queryCode){
 		String returnString = "";
 		switch (queryCode){
+            case 0:
+                if(!(ObtainQueryCode.getQueryText() == "")){
+                    returnString = ObtainQueryCode.getQueryText();
+                }
+                break;
 			case 1:
 				returnString = "SELECT fname, lname FROM CLIENT WHERE ssn IN (SELECT client_ssn FROM DEPENDENTS)\n" +
 						"UNION\n" +
