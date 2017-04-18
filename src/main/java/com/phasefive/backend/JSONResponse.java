@@ -1,6 +1,7 @@
 package com.phasefive.backend;
 
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.json.JSONArray;
@@ -67,8 +68,13 @@ public class JSONResponse extends SQLConnect {
 	}
 
 	protected void putJSONArrayIntoResponseArray() throws JSONException, SQLException {
-		JSONArray SQLData = converter.convert(SQLConnect.setUpConnection());
+		ResultSet rs = SQLConnect.setUpConnection();
+		//while (rs.next()) {
+		//	System.out.println(rs.getString(2));
+		//}
+		JSONArray SQLData = converter.convert(rs);
 		responseArray.put(0, SQLData);
+
 	}
 
 

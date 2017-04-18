@@ -39,9 +39,6 @@ public class SQLConnect {
 				rs = conn.createStatement().executeQuery(query);
 				System.out.println("Got the result set.");
 				//delete below next
-				while (rs.next()) {
-					System.out.println(rs.getString(1));
-				}
 			}
 		}
 		catch (Exception ex) {
