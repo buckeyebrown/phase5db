@@ -3,6 +3,9 @@ defaultTasks 'java'
 buildscript {
     repositories {
         mavenCentral()
+        flatDir {
+            dirs 'lib'
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
@@ -39,6 +42,7 @@ configurations{
 }
 
 dependencies {
+    compile files('lib/sqljdbc42.jar')
 
     // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web") {
