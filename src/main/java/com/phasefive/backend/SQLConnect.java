@@ -37,9 +37,10 @@ public class SQLConnect {
 			if (conn != null) {
 				System.out.println("Connected to SQL server.");
 				rs = conn.createStatement().executeQuery(query);
+				System.out.println("Got the result set.");
 				//delete below next
 				while (rs.next()) {
-					System.out.println(rs.getString(4) + " " + rs.getString(6));
+					System.out.println(rs.getString(1));
 				}
 			}
 		}
@@ -47,7 +48,7 @@ public class SQLConnect {
 			ex.printStackTrace();
 		} finally {
 			//if (rs != null) try { rs.close(); } catch(Exception e) {}
-			if (conn != null) try { conn.close(); } catch(Exception e) {}
+			//if (conn != null) try { conn.close(); } catch(Exception e) {}
 			return rs;
 		}
 	}
