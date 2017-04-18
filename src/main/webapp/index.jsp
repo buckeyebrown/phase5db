@@ -60,6 +60,8 @@
 						<option value="4">Query 4 - Division</option>
 						<option value="5">Query 5 - Aggregate</option>
 						<option value="6">Query 6 - Inner Join</option>
+						<option value="7">Query 7 - CREATE TABLES</option>
+						<option value="8">Query 8 - INSERT VALUES</option>
 					</select>
 				</div>
 				<br>
