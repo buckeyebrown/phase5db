@@ -69,12 +69,8 @@ public class JSONResponse extends SQLConnect {
 
 	protected void putJSONArrayIntoResponseArray() throws JSONException, SQLException {
 		ResultSet rs = SQLConnect.setUpConnection();
-		//while (rs.next()) {
-		//	System.out.println(rs.getString(2));
-		//}
 		JSONArray SQLData = converter.convert(rs);
 		responseArray.put(0, SQLData);
-
 	}
 
 

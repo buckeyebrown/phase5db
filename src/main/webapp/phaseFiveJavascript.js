@@ -1,7 +1,7 @@
 function sendRequestAndObtainResponse(){
 	sendRequest.sendRequestToServlet();
 }
-var showTable = false;
+var showTable = true;
 
 var sendRequest = {
 	sendRequestToServlet : function() {
@@ -103,7 +103,7 @@ var handleResponse = {
 		});
 	},
 	createTableHTML: function (responseData, tableName, tableID) {
-		showTable = false;
+		showTable = true;
 		var tableHTML = '<h1>';
 		tableHTML += '<b>';
 		tableHTML += '<a class = "' + tableID + 'Header">';
@@ -114,21 +114,31 @@ var handleResponse = {
 		tableHTML += '<p>'
 		tableHTML += '<div class = ' + tableID + 'Contents>';
 		tableHTML += '<table style="width: 250px">';
-		for (var a = 0; a <= responseData.length - 2; a++) {
+		tableHTML += '<tr>';
+		for (var prop in responseData[0]){
+			tableHTML += '<th>';
+			tableHTML += prop;
+			tableHTML += '</th>';
+		}
+		for (var a = 0; a <= responseData.length; a++) {
 			tableHTML += '<tr>';
-			//maybe a foreach here
-			tableHTML += '<td>';
-			tableHTML += responseData[a];
-			tableHTML += '</td>';
-			tableHTML += '<td>';
-			tableHTML += responseData[a].salary;
-			tableHTML += '</td>';
-			tableHTML += '<td>';
-			tableHTML += responseData[a].ENTY_TYP;
-			tableHTML += '</td>';
-			tableHTML += '<td>';
-			tableHTML += responseData[a].LST_UPDT_APPL_SRVR_NM;
-			tableHTML += '</td>';
+			for (var prop in responseData[a]){
+				tableHTML += '<td>';
+				tableHTML += responseData[a][prop];
+				tableHTML += '</td>';
+			}
+			//tableHTML += '<td>';
+			//tableHTML += responseData[a];
+			//tableHTML += '</td>';
+			//tableHTML += '<td>';
+			//tableHTML += responseData[a].salary;
+			//tableHTML += '</td>';
+			//tableHTML += '<td>';
+			//tableHTML += responseData[a].ENTY_TYP;
+			//tableHTML += '</td>';
+			//tableHTML += '<td>';
+			//tableHTML += responseData[a].LST_UPDT_APPL_SRVR_NM;
+			//tableHTML += '</td>';
 			tableHTML += '</tr>';
 		}
 		tableHTML += '</table>';
