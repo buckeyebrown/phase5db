@@ -18,7 +18,9 @@
 	<div id="Input_Details">
 		<div class="project">
 			<h1>CSE 3241 Phase 5</h1>
-			<h3>Select a Query to run.</h3>
+			<h4>Dylan Brown, Jacob Shoaf, Tanya Suri</h4>
+			<br>
+			<h3>List of Queries to run.</h3>
 			<div class="list">
 				<ol>
 					<li>
