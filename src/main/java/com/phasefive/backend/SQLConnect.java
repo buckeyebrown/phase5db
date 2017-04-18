@@ -25,7 +25,7 @@ public class SQLConnect {
 		String connectionUrl = "jdbc:sqlserver://localhost:1433;" +
 				"databaseName=insurance;integratedSecurity=true;";
 
-		String query = "SELECT * FROM EMPLOYEES";
+		String query = getQuery(ObtainQueryCode.getQueryCode());
 				//Change this
 		try {
 			//Establish the connection
@@ -48,6 +48,39 @@ public class SQLConnect {
 			//if (conn != null) try { conn.close(); } catch(Exception e) {}
 			return rs;
 		}
+	}
+
+	private static String getQuery(int queryCode){
+		String returnString = "";
+		switch (queryCode){
+			case 1:
+				returnString = "SELECT fname, lname FROM CLIENT WHERE ssn IN (SELECT client_ssn FROM DEPENDENTS)\n" +
+						"UNION\n" +
+						"SELECT fname, lname FROM CLIENT WHERE employee_ssn IN (SELECT emp_ssn FROM EMPLOYEES WHERE lname = 'higgins')";
+				break;
+			case 2:
+				returnString = "SELECT fname, lname FROM CLIENT WHERE ssn IN (SELECT client_ssn FROM DEPENDENTS)\n" +
+						"INTERSECT\n" +
+						"SELECT fname, lname FROM CLIENT WHERE employee_ssn IN (SELECT emp_ssn FROM EMPLOYEES WHERE lname = 'higgins')";
+				break;
+			case 3:
+				returnString = "SELECT Account_ID FROM ACCOUNTS\n" +
+						"EXCEPT\n" +
+						"(SELECT ssn FROM CLIENT WHERE ssn IN (SELECT client_ssn FROM DEPENDENTS)\n" +
+						"INTERSECT\n" +
+						"SELECT employee_ssn FROM CLIENT WHERE employee_ssn IN (SELECT emp_ssn FROM EMPLOYEES WHERE lname = 'higgins'))";
+				break;
+			case 4:
+				returnString = "SELECT vehicle_model FROM VEHICLES WHERE NOT EXISTS (SELECT Report_Number FROM ACCIDENT_HISTORY)";
+				break;
+			case 5:
+				returnString = "SELECT SUM(salary) FROM EMPLOYEES WHERE salary > 40000";
+				break;
+			case 6:
+				returnString = "SELECT * FROM (ACCOUNTS as a INNER JOIN CAR_INSURANCE_POLICY as c ON a.Account_ID = c.accountNumber) INNER JOIN BOAT_INSURANCE_POLICY as b ON b.accountNumber = a.Account_ID\n";
+				break;
+		}
+		return returnString;
 	}
 
 }

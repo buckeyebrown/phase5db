@@ -83,7 +83,7 @@ var handleResponse = {
 	},
 
 	writeTableToHTML: function (responseData) {
-		var tableName = 'Requested Table';
+		var tableName = 'Query ' + $("#selectedQueryCode").val() + ' Table';
 		var tableID = 'requestedTable';
 		var tableHTML = handleResponse.createTableHTML(responseData,
 			tableName, tableID);
@@ -127,18 +127,6 @@ var handleResponse = {
 				tableHTML += responseData[a][prop];
 				tableHTML += '</td>';
 			}
-			//tableHTML += '<td>';
-			//tableHTML += responseData[a];
-			//tableHTML += '</td>';
-			//tableHTML += '<td>';
-			//tableHTML += responseData[a].salary;
-			//tableHTML += '</td>';
-			//tableHTML += '<td>';
-			//tableHTML += responseData[a].ENTY_TYP;
-			//tableHTML += '</td>';
-			//tableHTML += '<td>';
-			//tableHTML += responseData[a].LST_UPDT_APPL_SRVR_NM;
-			//tableHTML += '</td>';
 			tableHTML += '</tr>';
 		}
 		tableHTML += '</table>';
